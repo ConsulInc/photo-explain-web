@@ -1,0 +1,73 @@
+.home-container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-side {
+  background-color: #00bfff; /* blue */
+  flex: 1;
+}
+
+.right-side {
+  background-color: #ffa07a; /* coral */
+  flex: 1;
+}
+
+.download-links-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  height: 100vh;
+}
+
+.download-button-ios {
+  background-color: black; /* blue */
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.download-button-android {
+  background-color: black; /* green */
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50%;
+  margin-top: 5%;
+}
+
+.app-header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.app-title {
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+
+.app-logo {
+  width: 200px;
+  height: 200px;
+  margin-top: 2rem;
+}
+
+.appDescription {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
