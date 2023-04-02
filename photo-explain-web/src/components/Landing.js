@@ -43,8 +43,8 @@ class Landing extends Component {
             style={{ marginTop: 50 }}
           >
             <Stack direction={"row"} spacing={6}>
-              <Link href={"#"}>Privacy Policy</Link>
-              <Link href={"#"}>Terms and Conditions</Link>
+              <Link href={"/privacy-policy"}>Privacy Policy</Link>
+              <Link href={"/terms-of-service"}>Terms and Conditions</Link>
             </Stack>
           </Container>
 
