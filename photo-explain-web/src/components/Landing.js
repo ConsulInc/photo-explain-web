@@ -27,8 +27,24 @@ class Landing extends Component {
           </div>
         </header>
 
-        <button className="download-button-ios">Download on iOS</button>
-        <button className="download-button-android">Download on Android</button>
+        <button
+          onClick={() => {
+            window.location.href =
+              "https://apps.apple.com/us/app/photo-answer-1-photo-solver/id6445838759";
+          }}
+          className="download-button-ios"
+        >
+          Download on iOS
+        </button>
+        <button
+          onClick={() => {
+            window.location.href =
+              "https://play.google.com/store/apps/details?id=com.photo_answer_fe";
+          }}
+          className="download-button-android"
+        >
+          Download on Android
+        </button>
         <Box
         // bg={useColorModeValue("gray.50", "gray.900")}
         // color={useColorModeValue("gray.700", "gray.200")}

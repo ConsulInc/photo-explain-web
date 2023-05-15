@@ -7,7 +7,8 @@ import { useEffect } from "react";
 import Landing from "./components/Landing";
 import TermsAndConditions from "./components/TermsAndConditions";
 import PrivacyPolicy from "./components/PrivacyPolicy";
-
+import AdsTxt from "./components/AdsTxt";
+import QuestionPage from "./components/QuestionPage";
 const CustomRouter = ({ basename, children, history }) => {
   const [state, setState] = React.useState({
     action: history.action,
@@ -42,6 +43,11 @@ function App() {
         <Route
           path="/privacy-policy"
           element={<PrivacyPolicy history={history} />}
+        />
+        <Route path="/app-ads.txt" element={<AdsTxt history={history} />} />
+        <Route
+          path="/question/:id"
+          element={<QuestionPage history={history} />}
         />
       </Routes>
     </CustomRouter>
