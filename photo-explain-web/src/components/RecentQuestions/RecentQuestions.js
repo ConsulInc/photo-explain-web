@@ -6,6 +6,8 @@ import { Divider } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import "./RecentQuestions.css";
+
 function RecentQuestions(props) {
   const { id } = useParams();
   const [data, setData] = useState([]);
@@ -18,26 +20,23 @@ function RecentQuestions(props) {
     });
   }, []);
 
-  // navigateQuestionPage = (questionText) => {
-  //   resonseIndex=axios
-  //   .post(API_ENDPOINT + "/question", {
-
-  //     })
-  //     .then((response) => {
-  //       navigate(`/question/${responseIndex}`);
-  //     });
-  //   }
-
-  //   }
+  const navigateQuestionPage = (question) => {
+    navigate(`/question/${question.questionID.S}`);
+  };
 
   return (
     <div>
       <Header history={props.history} />
       <div class="recentQuestionsContainer">
+        <div style={{ marginTop: 20 }}>
+          <div class="recentQuestionsTitle">5 most recent questions</div>
+        </div>
         {data.map((question, index) => (
-          <div>
+          <div onClick={() => navigateQuestionPage(question)}>
             <div style={{ width: "80vw" }} key={index}>
-              {question.questionText && <div>{question.questionText.S}</div>}
+              {question.questionText && (
+                <div class="recentQuestionsFont">{question.questionText.S}</div>
+              )}
               {/* <Link to={`/question/${index}`}>{question.title}</Link> */}
             </div>
             <Divider />

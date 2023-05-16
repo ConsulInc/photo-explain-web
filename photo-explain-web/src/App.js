@@ -51,7 +51,7 @@ function App() {
         />
         <Route path="/app-ads.txt" element={<AdsTxt history={history} />} />
         <Route
-          path="/question/:id"
+          path="/question/:questionID"
           element={<QuestionPage history={history} />}
         />
         <Route

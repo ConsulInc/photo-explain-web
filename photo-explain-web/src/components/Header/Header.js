@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Button, Divider } from "@chakra-ui/react";
-
+import {
+  Button,
+  Divider,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+} from "@chakra-ui/react";
+import axios from "axios";
+import { API_ENDPOINT } from "../../config";
 import Logo from "../logo.png";
 import "./Header.css";
 
 export const Header = (props) => {
-  const [showSignUpIn, setShowSignUpIn] = useState(false);
-
+  const [totalNumber, setTotalNumber] = useState(0);
   const navHome = (eventId) => {
     props.history.push("/");
   };
@@ -28,11 +34,30 @@ export const Header = (props) => {
     console.log(localStorage.getItem("id"));
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(API_ENDPOINT + "/web-question/getNumberOfItems")
+      .then((response) => {
+        console.log(response.data);
+        setTotalNumber(response.data.count);
+      });
+  }, []);
+
   return (
     <div>
       <div className="headerContainer">
-        <div className="mobileAboutUs" onClick={navAboutUs}>
-          About Us
+        <div className="mobileAboutUs">
+          <div class="statsCount">
+            {totalNumber > 0 && (
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                {" "}
+                <p style={{ fontWeight: "bold", fontSize: 25 }}>
+                  {totalNumber}{" "}
+                </p>{" "}
+                &nbsp; questions answered
+              </div>
+            )}
+          </div>
         </div>
         <div
           onClick={navHome}
@@ -43,6 +68,7 @@ export const Header = (props) => {
         >
           <img alt="logo" src={Logo} width={40} />
         </div>
+
         <div
           style={{
             display: "flex",
@@ -50,13 +76,9 @@ export const Header = (props) => {
           }}
         >
           <div
-            style={{ flex: 1, textAlign: "center" }}
-            className="webAboutUs hoverHeaderTab"
-            onClick={navAboutUs}
-          >
-            About Us
-          </div>
-          <div
+            onClick={() => {
+              props.history.push("/");
+            }}
             className=""
             style={{
               textAlign: "center",
@@ -64,22 +86,14 @@ export const Header = (props) => {
               justifyContent: "center",
             }}
           >
-            {localStorage.getItem("id") != null ? (
-              <div
-                className="mobileMyOrders hoverHeaderTab"
-                onClick={(e) => {
-                  props.history.push("/orders");
-                }}
-              >
-                My Orders
-              </div>
-            ) : (
-              <div>
-                <div className="mobileMyOrders hoverHeaderTab">
-                  Sign Up/ Log In
-                </div>
-              </div>
-            )}
+            <Breadcrumb>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">
+                  {" "}
+                  <div className="recentQuestionsFont">Home</div>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            </Breadcrumb>
           </div>
         </div>
       </div>
