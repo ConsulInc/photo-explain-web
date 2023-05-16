@@ -1,0 +1,105 @@
+.promotionalBanner {
+  padding: 1rem;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.promotionalText {
+  font-family: "Prata";
+  font-size: 1rem;
+  color: white;
+}
+
+.promotionalDivider {
+  margin-inline: 1.5rem;
+  color: white;
+}
+
+.promotionalLimitedOffer {
+  font-size: 1.5rem;
+}
+
+.headerContainer {
+  background-color: #f0f4fc;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+}
+
+.mobileAboutUs {
+  visibility: hidden;
+}
+
+.webAboutUs {
+  margin-right: 3em;
+  pointer-events: cursor;
+}
+
+.landingFont {
+  font-family: "Prata";
+  font-size: 16px;
+  color: black;
+  pointer-events: cursor;
+}
+
+.landingHeaderFont {
+  font-family: "Prata";
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.hoverHeaderTab:hover {
+  text-decoration: underline;
+  pointer-events: cursor;
+}
+
+@media (max-width: 767px) {
+  div {
+    font-size: 4vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .promotionalBanner {
+    padding: 1.5vh;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .promotionalDivider {
+    display: none;
+  }
+
+  .promotionalRetailValue {
+    display: none;
+  }
+
+  .promotionalText {
+    font-size: 0.75rem;
+  }
+
+  .promotionalLimitedOffer {
+    font-size: 1.25rem;
+  }
+
+  .mobileAboutUs {
+    visibility: visible;
+    font-size: 0.75rem;
+  }
+
+  .mobileMyOrders {
+    align-self: "center";
+    font-size: 0.75rem;
+  }
+
+  .webAboutUs {
+    display: none;
+  }
+}

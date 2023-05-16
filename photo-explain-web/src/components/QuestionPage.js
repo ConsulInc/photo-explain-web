@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { API_ENDPOINT } from "../config";
-
+import { Header } from "./Header/Header";
 import axios from "axios";
 
-function QuestionPage() {
+function QuestionPage(props) {
   const { id } = useParams();
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
-  const [data, setData] = useState([{}]);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    axios.get(API_ENDPOINT + "/question/" + id).then((response) => {
+    axios.get(API_ENDPOINT + "/web-question/" + id).then((response) => {
       console.log(response.data);
       setQuestion(response.data.quesionText);
       setAnswer(response.data.answerText);
@@ -31,6 +31,7 @@ function QuestionPage() {
 
   return (
     <div>
+      <Header history={props.history} />
       <h2>Question {id}ffff</h2>
       <p>{question}</p>
       <p>{answer}</p>

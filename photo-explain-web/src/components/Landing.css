@@ -57,8 +57,9 @@
   text-align: center;
 }
 .app-title {
-  font-size: 3rem;
+  font-size: 4rem;
   margin-top: 2rem;
+  font-family: "Buenos Aires";
 }
 
 .app-logo {
@@ -70,4 +71,51 @@
 .appDescription {
   font-size: 1.5rem;
   margin-top: 2rem;
+  font-family: "Buenos Aires";
+}
+
+.landingHeaderContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+}
+
+.landingHeader1 {
+  width: 80%;
+  /* background-color: blue; */
+}
+
+.landingHeader2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  /* background-color: red; */
+}
+
+.centerRecent {
+}
+
+.recentQuestionsFont {
+  font-family: "Buenos Aires";
+  font-size: 22px;
+}
+
+.recentQuestionsContainer {
+  position: absolute;
+  left: 15%;
+  display: flex;
+  width: 80vw;
+  height: "100%";
+  /* background-color: red; */
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.recentQuestionsContainer div {
+  margin: 20px;
+  padding: 10px;
+  background-color: white;
 }
