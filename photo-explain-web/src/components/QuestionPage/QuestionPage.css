@@ -1,0 +1,26 @@
+.questionsPageContainer {
+  position: absolute;
+  left: 25%;
+  display: flex;
+  width: 60vw;
+  height: "100%";
+  /* background-color: red; */
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 100px;
+}
+.questionsPageContainer div {
+  margin: 20px;
+  padding: 30px;
+  background-color: white;
+}
+.questionFont {
+  font-family: "Buenos Aires";
+  font-size: 20px;
+}
+.recentQuestionsTitle {
+  font-family: "Buenos Aires";
+  font-size: 25px;
+  text-decoration: underline;
+}

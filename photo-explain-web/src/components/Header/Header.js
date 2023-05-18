@@ -38,7 +38,6 @@ export const Header = (props) => {
     axios
       .get(API_ENDPOINT + "/web-question/getNumberOfItems")
       .then((response) => {
-        console.log(response.data);
         setTotalNumber(response.data.count);
       });
   }, []);

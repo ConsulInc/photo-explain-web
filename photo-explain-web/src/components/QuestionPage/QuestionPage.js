@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { API_ENDPOINT } from "../config";
-import { Header } from "./Header/Header";
+import { API_ENDPOINT } from "../../config";
+import { Header } from "../Header/Header";
 import axios from "axios";
+import "./QuestionPage.css";
+import { Divider } from "@chakra-ui/react";
 
 function QuestionPage(props) {
   const { questionID } = useParams();
@@ -13,7 +15,6 @@ function QuestionPage(props) {
 
   useEffect(() => {
     axios.get(API_ENDPOINT + "/web-question/" + questionID).then((response) => {
-      console.log(response.data);
       setData(response.data);
       setQuestion(response.data.questionText);
       setAnswer(response.data.answerText);
@@ -23,9 +24,11 @@ function QuestionPage(props) {
   return (
     <div>
       <Header history={props.history} />
-      <h2>Question {questionID}ffff</h2>
-      <p>{question}</p>
-      <p>{answer}</p>
+      <div class="questionsPageContainer">
+        <div class="questionFont">Question: {question}</div>
+        <Divider />
+        <div class="recentQuestionsFont">{answer}</div>
+      </div>
     </div>
   );
 }

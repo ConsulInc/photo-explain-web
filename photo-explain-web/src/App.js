@@ -8,7 +8,7 @@ import Landing from "./components/Landing";
 import TermsAndConditions from "./components/TermsAndConditions";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import AdsTxt from "./components/AdsTxt";
-import QuestionPage from "./components/QuestionPage";
+import QuestionPage from "./components/QuestionPage/QuestionPage";
 import RecentQuestions from "./components/RecentQuestions/RecentQuestions";
 
 const CustomRouter = ({ basename, children, history }) => {
