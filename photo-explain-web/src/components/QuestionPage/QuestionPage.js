@@ -8,7 +8,6 @@ import { Divider } from "@chakra-ui/react";
 
 function QuestionPage(props) {
   const { questionID } = useParams();
-  console.log(questionID);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [data, setData] = useState(null);

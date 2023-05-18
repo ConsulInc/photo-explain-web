@@ -15,7 +15,6 @@ function RecentQuestions(props) {
 
   useEffect(() => {
     axios.get(API_ENDPOINT + "/web-question/recentFive").then((response) => {
-      console.log(response.data);
       setData(response.data);
     });
   }, []);

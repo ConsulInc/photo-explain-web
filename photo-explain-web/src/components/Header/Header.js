@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Divider,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-} from "@chakra-ui/react";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
 import axios from "axios";
 import { API_ENDPOINT } from "../../config";
 import Logo from "../logo.png";
@@ -16,23 +10,6 @@ export const Header = (props) => {
   const navHome = (eventId) => {
     props.history.push("/");
   };
-
-  const navLogin = (eventId) => {
-    console.log("hi");
-    props.history.push("/login");
-  };
-
-  const navAboutUs = (eventId) => {
-    props.history.push("/aboutus");
-  };
-
-  const navOrders = (eventId) => {
-    props.history.push("/orders");
-  };
-
-  useEffect(() => {
-    console.log(localStorage.getItem("id"));
-  }, []);
 
   useEffect(() => {
     axios
