@@ -5,6 +5,7 @@ import { Header } from "../Header/Header";
 import axios from "axios";
 import "./QuestionPage.css";
 import { Divider } from "@chakra-ui/react";
+import { Helmet } from "react-helmet";
 
 function QuestionPage(props) {
   const { questionID } = useParams();
