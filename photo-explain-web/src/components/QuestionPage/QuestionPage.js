@@ -23,6 +23,15 @@ function QuestionPage(props) {
   return (
     <div>
       <Header history={props.history} />
+      <div>
+        <Helmet>
+          <title>{`Homework - ${question}`}</title>
+          <meta name="description" content={`${question} - ${answer}`} />
+          <meta property="og:description" content={`${question} - ${answer}`} />
+          {/* Add more metadata tags as needed */}
+        </Helmet>
+        {/* Rest of your component's JSX */}
+      </div>
       <div class="questionsPageContainer">
         <div class="questionFont">Question: {question}</div>
         <Divider />
