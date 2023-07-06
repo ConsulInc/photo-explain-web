@@ -11,6 +11,10 @@ import AdsTxt from "./components/AdsTxt";
 import QuestionPage from "./components/QuestionPage/QuestionPage";
 import RecentQuestions from "./components/RecentQuestions/RecentQuestions";
 
+import LoginPage from "./components/LoginPage/LoginPage";
+import SignUpPage from "./components/LoginPage/SignUpPage";
+import BillingPage from "./components/BillingPage/BillingPage";
+import ChromePage from "./components/ChromePage/ChromePage";
 const CustomRouter = ({ basename, children, history }) => {
   const [state, setState] = React.useState({
     action: history.action,
@@ -58,6 +62,10 @@ function App() {
           path="/recentQuestions"
           element={<RecentQuestions history={history} />}
         />
+        <Route path="/login" element={<LoginPage history={history} />} />
+        <Route path="/signup" element={<SignUpPage history={history} />} />
+        <Route path="/billing" element={<BillingPage history={history} />} />
+        <Route path="/chrome" element={<ChromePage history={history} />} />
       </Routes>
     </CustomRouter>
   );

@@ -32,11 +32,27 @@ const Landing = (props) => {
         <div class="landingHeader1"></div>
         <div class="landingHeader2">
           <div class="centerRecent">
-            <Breadcrumb>
+            <Breadcrumb style={{ marginRight: 50 }}>
               <BreadcrumbItem>
                 <BreadcrumbLink href="/recentQuestions">
                   {" "}
                   <div className="recentQuestionsFont">Recent Questions</div>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            </Breadcrumb>
+            <Breadcrumb style={{ marginRight: 50 }}>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/chrome">
+                  {" "}
+                  <div className="recentQuestionsFont">Chrome Extension</div>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            </Breadcrumb>
+            <Breadcrumb>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/billing">
+                  {" "}
+                  <div className="recentQuestionsFont">Billing</div>
                 </BreadcrumbLink>
               </BreadcrumbItem>
             </Breadcrumb>
@@ -66,7 +82,16 @@ const Landing = (props) => {
             </Text>
           </div>
         </header>
-
+        <button
+          style={{ marginTop: 10 }}
+          onClick={() => {
+            window.location.href =
+              "https://apps.apple.com/us/app/photo-answer-1-photo-solver/id6445838759";
+          }}
+          className="download-button-ios"
+        >
+          Get the Chrome Extension
+        </button>
         <button
           onClick={() => {
             window.location.href =
