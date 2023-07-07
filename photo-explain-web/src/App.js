@@ -15,6 +15,7 @@ import LoginPage from "./components/LoginPage/LoginPage";
 import SignUpPage from "./components/LoginPage/SignUpPage";
 import BillingPage from "./components/BillingPage/BillingPage";
 import ChromePage from "./components/ChromePage/ChromePage";
+
 const CustomRouter = ({ basename, children, history }) => {
   const [state, setState] = React.useState({
     action: history.action,

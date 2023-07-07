@@ -16,50 +16,43 @@ import {
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Header } from "../Header/Header";
-import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActions";
+import { resetRegistered, login } from "../../features/user";
+import { LandingWithoutHeader } from "../Landing/LandingWithoutHeader";
 
 export const LoginPage = (props) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { counter } = props;
-
-  // Dispatch actions
-  const handleChangeEmail = (e) => {
-    console.log("user: " + e.target.value);
-    setEmail(e.target.value);
+  const handleUser = (event) => {
+    setEmail(event.target.value);
+    console.log(email);
   };
-
-  const handleChangePassword = (e) => {
-    console.log("pass: " + e.target.value);
-    setPassword(e.target.value);
+  const handlePass = (event) => {
+    setPassword(event.target.value);
+    console.log(password);
   };
-
-  const handleSubmit = (e) => {
+  const submitLogin = (e) => {
     e.preventDefault();
-    dispatch(loginUser({ email, password }));
+    dispatch(login({ email, password }));
   };
 
-  // const { isAuthenticated, loading, registered } = useSelector(
-  //   (state) => state.user
-  // );
+  const { isAuthenticated, loading, registered } = useSelector(
+    (state) => state.user
+  );
 
-  // useEffect(() => {
-  //   if (registered) {
-  //     // dispatch(resetRegistered());
-  //   }
-  //   if (isAuthenticated) {
-  //     props.history.push("/home");
-  //   }
-  // }, [isAuthenticated, registered, dispatch, props.history]);
+  useEffect(() => {
+    if (registered) {
+      dispatch(resetRegistered());
+    }
+    if (isAuthenticated) {
+      props.history.push("/home");
+    }
+  }, [isAuthenticated, registered, dispatch, props.history]);
 
   return (
     <div>
-      <Header history={props.history} />
-
+      <LandingWithoutHeader history={props.history} />
       <Flex
         minH={"100vh"}
         align={"center"}
@@ -68,16 +61,16 @@ export const LoginPage = (props) => {
       >
         <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
           <Stack align={"center"}>
-            {/* {loading ? (
+            {loading ? (
               <div>
                 <Spinner />
               </div>
             ) : (
               ""
-            )} */}
+            )}
             <Heading fontSize={"4xl"}>Sign in to your account</Heading>
           </Stack>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={submitLogin}>
             <Box
               rounded={"lg"}
               bg={useColorModeValue("white", "gray.700")}
@@ -89,7 +82,7 @@ export const LoginPage = (props) => {
                   <FormLabel>Email address</FormLabel>
                   <Input
                     value={email}
-                    onChange={(e) => handleChangeEmail(e)}
+                    onChange={(e) => handleUser(e)}
                     type="email"
                   />
                 </FormControl>
@@ -97,7 +90,7 @@ export const LoginPage = (props) => {
                   <FormLabel>Password</FormLabel>
                   <Input
                     value={password}
-                    onChange={(e) => handleChangePassword(e)}
+                    onChange={(e) => handlePass(e)}
                     type="password"
                   />
                 </FormControl>
@@ -134,13 +127,3 @@ export const LoginPage = (props) => {
     </div>
   );
 };
-
-const mapStateToProps = (state) => {
-  return {
-    loading: state.loading,
-    user: state.user,
-    error: state.error,
-  };
-};
-
-export default connect(mapStateToProps)(LoginPage);
