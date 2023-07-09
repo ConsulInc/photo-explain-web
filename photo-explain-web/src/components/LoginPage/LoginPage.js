@@ -43,17 +43,20 @@ export const LoginPage = (props) => {
     dispatch(loginUser({ email, password }));
   };
 
-  // const { isAuthenticated, loading, registered } = useSelector(
-  //   (state) => state.user
-  // );
+  const isAuthenticated = useSelector(
+    (state) => state.authReducer.isAuthenticated
+  );
 
-  // useEffect(() => {
-  //   if (registered) {
-  //     // dispatch(resetRegistered());
-  //   }
-  //   if (isAuthenticated) {
-  //     props.history.push("/home");
-  //   }
+  console.log("auth: ", isAuthenticated);
+
+  useEffect(() => {
+    // if (registered) {
+    // dispatch(resetRegistered());
+    // }
+    if (isAuthenticated) {
+      props.history.push("/home");
+    }
+  }, [isAuthenticated]);
   // }, [isAuthenticated, registered, dispatch, props.history]);
 
   return (

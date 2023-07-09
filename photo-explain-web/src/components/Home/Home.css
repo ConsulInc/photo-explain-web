@@ -1,0 +1,62 @@
+.defaultFont {
+  font-family: Buenos Aires;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0em;
+}
+
+.deafaultHeaderFont {
+  font-family: Buenos Aires;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.collectionList {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+  width: 80%;
+  /* background-color: rgba(255, 255, 255, 0.48); */
+  /* background-color: blue; */
+}
+
+.collectionTopContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.subSofiaDescription2 {
+  font-size: 16px;
+  font-family: Sofia;
+  color: black;
+}
+
+.WelcomeFont {
+  font-size: 30px;
+
+  cursor: pointer;
+  font-family: sofia-pro, sans-serif;
+}
+
+.balanceFont {
+  font-size: 20px;
+
+  cursor: pointer;
+  font-family: sofia-pro, sans-serif;
+}
+
+.subSofiaDescription {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Sofia;
+  color: #a0aec0;
+  text-transform: uppercase;
+}
+
+.transactionItem {
+  font-size: 16px;
+  font-family: Sofia;
+  color: black;
+}

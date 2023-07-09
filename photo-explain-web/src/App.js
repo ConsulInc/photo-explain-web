@@ -15,6 +15,7 @@ import LoginPage from "./components/LoginPage/LoginPage";
 import SignUpPage from "./components/LoginPage/SignUpPage";
 import BillingPage from "./components/BillingPage/BillingPage";
 import ChromePage from "./components/ChromePage/ChromePage";
+import { Home } from "./components/Home/Home";
 
 const CustomRouter = ({ basename, children, history }) => {
   const [state, setState] = React.useState({
@@ -67,6 +68,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage history={history} />} />
         <Route path="/billing" element={<BillingPage history={history} />} />
         <Route path="/chrome" element={<ChromePage history={history} />} />
+        <Route path="/home" element={<Home history={history} />} />
       </Routes>
     </CustomRouter>
   );

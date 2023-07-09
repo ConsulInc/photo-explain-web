@@ -40,19 +40,12 @@ const Landing = (props) => {
                 </BreadcrumbLink>
               </BreadcrumbItem>
             </Breadcrumb>
-            <Breadcrumb style={{ marginRight: 50 }}>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/chrome">
-                  {" "}
-                  <div className="recentQuestionsFont">Chrome Extension</div>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-            </Breadcrumb>
+
             <Breadcrumb>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/billing">
+                <BreadcrumbLink href="/login">
                   {" "}
-                  <div className="recentQuestionsFont">Billing</div>
+                  <div className="recentQuestionsFont">Login</div>
                 </BreadcrumbLink>
               </BreadcrumbItem>
             </Breadcrumb>
