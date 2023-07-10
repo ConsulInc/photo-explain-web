@@ -4,6 +4,9 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
 export const USER_INFO_GRAB = "USER_INFO_GRAB";
+export const AUTH_CHECK_SUCCESS = "AUTH_CHECK_SUCCESS";
+export const AUTH_CHECK_FAILURE = "AUTH_CHECK_FAILURE";
+
 export const loginRequest = () => {
   return {
     type: LOGIN_REQUEST,
@@ -35,6 +38,46 @@ export const userGrabInfo = (userInfo) => {
   return {
     type: USER_INFO_GRAB,
     payload: userInfo,
+  };
+};
+
+export const authCheckSuccess = () => {
+  return {
+    type: AUTH_CHECK_SUCCESS,
+  };
+};
+
+export const authCheckFailure = () => {
+  return {
+    type: AUTH_CHECK_FAILURE,
+  };
+};
+
+export const getUserInfo = () => {
+  return (dispatch) => {
+    const token = localStorage.getItem("token");
+    fetch("http://127.0.0.1:8888/web-question/grabUserInfo", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Authentication check failed");
+        }
+      })
+      .then((data) => {
+        // dispatch the user data to Redux store
+        dispatch(userGrabInfo(data));
+        dispatch(authCheckSuccess());
+      })
+      .catch((error) => {
+        // Handle the error
+        dispatch(authCheckFailure());
+      });
   };
 };
 
@@ -73,9 +116,6 @@ export const loginUser = (userLogin) => {
           .then((response) => response.json())
           .then((user) => {
             dispatch(loginSuccess(user)); // update Redux state with the user credentials
-            console.log("ehllo user");
-            console.log(user);
-            localStorage.setItem("email", user.email);
           })
           .catch((error) => {
             dispatch(loginFailure(error.message));
@@ -83,28 +123,6 @@ export const loginUser = (userLogin) => {
       })
       .catch((error) => {
         dispatch(loginFailure(error.message));
-      });
-  };
-};
-
-export const getUserInfo = () => {
-  return (dispatch) => {
-    console.log("refresh???");
-
-    const token = localStorage.getItem("token");
-    fetch("http://127.0.0.1:8888/web-question/grabUserInfo", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // dispatch the user data to Redux store
-        dispatch(userGrabInfo(data));
-      })
-      .catch((error) => {
-        // Handle the error
       });
   };
 };

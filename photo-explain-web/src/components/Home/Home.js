@@ -42,14 +42,11 @@ export const Home = (props) => {
   const user = useSelector((state) => state.authReducer.user);
   console.log(user);
 
-  console.log("email");
-  console.log(localStorage.getItem("email"));
-
   useEffect(() => {
-    console.log("test");
-    // fetchSubscriptionStatus();
-    // dispatch(refreshUser());
-  }, []);
+    if (!isAuthenticated) {
+      props.history.push("/login");
+    }
+  }, [isAuthenticated]);
 
   const fetchSubscriptionStatus = async () => {
     try {
@@ -119,7 +116,7 @@ export const Home = (props) => {
                   <Box py={12}>
                     <VStack spacing={2} textAlign="center">
                       <Heading as="h1" fontSize="4xl">
-                        Hi, {localStorage.getItem("email")}
+                        Hi, {user.email}
                         Built by students. For students
                       </Heading>
                       <Text fontSize="lg" color={"gray.500"}>

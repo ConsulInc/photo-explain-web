@@ -4,6 +4,8 @@ import {
   LOGIN_FAILURE,
   LOGOUT_REQUEST,
   USER_INFO_GRAB,
+  AUTH_CHECK_SUCCESS,
+  AUTH_CHECK_FAILURE,
 } from "../actions/authActions";
 
 const initialState = {
@@ -42,10 +44,29 @@ const authReducer = (state = initialState, action) => {
         // logout
       };
     case USER_INFO_GRAB:
+      console.log("auth reducer");
+      console.log(action.payload);
       return {
         ...state,
-        userInfo: action.payload,
+        user: {
+          ...state.user,
+          email: action.payload.email,
+          name: "BLAH",
+          // test: action.payload.test,
+        },
       };
+
+    case AUTH_CHECK_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true,
+      };
+    case AUTH_CHECK_FAILURE:
+      return {
+        ...state,
+        isAuthenticated: false,
+      };
+
     default:
       return state;
   }
