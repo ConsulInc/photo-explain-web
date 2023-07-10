@@ -3,7 +3,7 @@ export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
-
+export const USER_INFO_GRAB = "USER_INFO_GRAB";
 export const loginRequest = () => {
   return {
     type: LOGIN_REQUEST,
@@ -30,6 +30,14 @@ export const logoutRequest = () => {
     type: LOGOUT_REQUEST,
   };
 };
+
+export const userGrabInfo = (userInfo) => {
+  return {
+    type: USER_INFO_GRAB,
+    payload: userInfo,
+  };
+};
+
 export const loginUser = (userLogin) => {
   console.log("into redux");
   console.log(userLogin);
@@ -45,11 +53,19 @@ export const loginUser = (userLogin) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log("fornt end token REACHED??? PRINTIGN DATA");
+        console.log(data);
+
+        if (data.message && data.message === "Invalid email or password") {
+          // If it does, dispatch failure action and stop further execution
+          dispatch(loginFailure(data.message));
+          return;
+        }
         const { access_token } = data;
         localStorage.setItem("token", access_token); // store token in local storage
 
         // Once login is successful, make an additional API call to retrieve user credentials
-        fetch("http://127.0.0.1:8888/web-question/loginUserInfo", {
+        fetch("http://127.0.0.1:8888/web-question/grabUserInfo", {
           headers: {
             Authorization: `Bearer ${access_token}`,
           },
@@ -59,7 +75,7 @@ export const loginUser = (userLogin) => {
             dispatch(loginSuccess(user)); // update Redux state with the user credentials
             console.log("ehllo user");
             console.log(user);
-            localStorage.setItem("email", user.logged_in_as);
+            localStorage.setItem("email", user.email);
           })
           .catch((error) => {
             dispatch(loginFailure(error.message));
@@ -71,30 +87,24 @@ export const loginUser = (userLogin) => {
   };
 };
 
-export const refreshUser = () => {
+export const getUserInfo = () => {
   return (dispatch) => {
+    console.log("refresh???");
+
     const token = localStorage.getItem("token");
-    if (token) {
-      // Perform API call or decode the token to retrieve user information
-      // For simplicity, assuming the token already contains user information
-      fetch("http://127.0.0.1:8888/web-question/refresh", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+    fetch("http://127.0.0.1:8888/web-question/grabUserInfo", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // dispatch the user data to Redux store
+        dispatch(userGrabInfo(data));
       })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to fetch user information");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          const user = data;
-          dispatch(loginSuccess(user));
-        })
-        .catch((error) => {
-          dispatch(loginFailure(error.message));
-        });
-    }
+      .catch((error) => {
+        // Handle the error
+      });
   };
 };

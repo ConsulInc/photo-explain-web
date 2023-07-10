@@ -22,8 +22,8 @@ import { loginUser } from "../../actions/authActions";
 
 export const LoginPage = (props) => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("test@gmail.com");
+  const [password, setPassword] = useState("test");
 
   const { counter } = props;
 

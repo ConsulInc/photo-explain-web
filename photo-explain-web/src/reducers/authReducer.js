@@ -3,6 +3,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_REQUEST,
+  USER_INFO_GRAB,
 } from "../actions/authActions";
 
 const initialState = {
@@ -39,6 +40,11 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         isAuthenticated: false,
         // logout
+      };
+    case USER_INFO_GRAB:
+      return {
+        ...state,
+        userInfo: action.payload,
       };
     default:
       return state;

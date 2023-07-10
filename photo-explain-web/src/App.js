@@ -17,6 +17,9 @@ import BillingPage from "./components/BillingPage/BillingPage";
 import ChromePage from "./components/ChromePage/ChromePage";
 import { Home } from "./components/Home/Home";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInfo } from "./actions/authActions";
+
 const CustomRouter = ({ basename, children, history }) => {
   const [state, setState] = React.useState({
     action: history.action,
@@ -38,7 +41,12 @@ const CustomRouter = ({ basename, children, history }) => {
 
 function App() {
   const history = createBrowserHistory();
-  useEffect(() => {}, []);
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.userInfo);
+
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, [dispatch]);
 
   return (
     <CustomRouter history={history}>

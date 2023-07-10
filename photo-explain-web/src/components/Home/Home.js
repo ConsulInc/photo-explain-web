@@ -25,6 +25,7 @@ export const Home = (props) => {
   // const { user, loading } = useSelector((state) => state.user);
   //   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
   const handleLogout = () => {
     console.log("lgout trigggered");
     dispatch(logoutRequest());
@@ -41,14 +42,12 @@ export const Home = (props) => {
   const user = useSelector((state) => state.authReducer.user);
   console.log(user);
 
-  console.log(localStorage.getItem("token"));
-
   console.log("email");
   console.log(localStorage.getItem("email"));
 
   useEffect(() => {
     console.log("test");
-    fetchSubscriptionStatus();
+    // fetchSubscriptionStatus();
     // dispatch(refreshUser());
   }, []);
 
@@ -120,6 +119,7 @@ export const Home = (props) => {
                   <Box py={12}>
                     <VStack spacing={2} textAlign="center">
                       <Heading as="h1" fontSize="4xl">
+                        Hi, {localStorage.getItem("email")}
                         Built by students. For students
                       </Heading>
                       <Text fontSize="lg" color={"gray.500"}>
